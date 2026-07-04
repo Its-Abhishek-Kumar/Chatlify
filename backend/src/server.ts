@@ -462,7 +462,7 @@ io.on("connection", async (socket) => {
 
 // Start server
 const PORT = process.env.PORT || 8080;
-const HOST = process.env.HOST || "127.0.0.1";
+const HOST = process.env.HOST || "0.0.0.0";
 
 server.listen(Number(PORT), HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);
