@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@tailwind utilities;
+
+body {
+  background: #09090B;
+  color: #FAFAFA;
+  font-family: 'Geist', 'Inter', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Glassmorphism Styles matching VisionOS/Linear */
+.glass {
+  background: rgba(13, 18, 26, 0.62);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glass-strong {
+  background: rgba(12, 17, 24, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(148, 163, 184, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.glass-active {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Selected conversation card gradient highlight */
+.chat-card-active {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(139, 92, 246, 0.03) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+/* Sent message bubble gradient */
+.bubble-sent {
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  border-radius: 16px 16px 4px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Received message bubble card */
+.bubble-received {
+  background: #121824;
+  color: #FFFFFF;
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bubble-sent .rounded-btn,
+.bubble-received .rounded-btn {
+  border-radius: 12px;
+}
+
+.bubble-sent [class*="bg-black\\/25"],
+.bubble-received [class*="bg-black\\/25"] {
+  background: rgba(15, 23, 42, 0.32);
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.message-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 12px;
+}
+
+.message-status-seen {
+  color: #FFFFFF;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.42));
+}
+
+/* Circular glowing stories ring */
+.story-ring {
+  background: linear-gradient(135deg, #EA580C, #8B5CF6);
+  padding: 2px;
+  border-radius: 999px;
+}
+
+.story-ring-viewed {
+  background: #3F3F46;
+  padding: 2px;
+  border-radius: 999px;
+}
+
+/* Floating Action Pen Button Gradient */
+.btn-gradient {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.45);
+}
+
+.btn-gradient:hover {
+  filter: brightness(1.1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Border Radii specs from guidelines */
+.rounded-btn {
+  border-radius: 12px;
+}
+
+.rounded-card {
+  border-radius: 20px;
+}
+
+.rounded-modal {
+  border-radius: 28px;
+}
+
+.rounded-sidebar {
+  border-radius: 24px;
+}
+
+/* Hide scrollbar classes */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Waveform bars animations mockup */
+.wave-bar {
+  width: 2px;
+  background-color: #A1A1AA;
+  border-radius: 1px;
+  transition: height 0.15s ease;
+}
+.wave-bar-active {
+  background-color: #2563EB;
+}
+
+/* Force third-party EmojiPicker to scale fluidly on tiny screens */
+.EmojiPickerReact {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
