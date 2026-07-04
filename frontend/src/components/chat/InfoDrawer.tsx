@@ -477,6 +477,9 @@ const InfoDrawer = ({ onClose }: InfoDrawerProps) => {
           online={!isGroup ? Boolean(otherUser?._id && onlineUsers.has(otherUser._id.toString())) : false}
         />
         <h4 className="font-bold text-base text-white truncate max-w-full px-2">{title}</h4>
+        {!isGroup && otherUser?.username && (
+          <p className="text-xs text-[#A1A1AA] mt-0.5 font-medium">@{otherUser.username}</p>
+        )}
         <p className="text-xs text-[#71717A] mt-0.5">{sub}</p>
 
         {/* COMPACT INTERACTION BUTTONS */}
@@ -506,19 +509,8 @@ const InfoDrawer = ({ onClose }: InfoDrawerProps) => {
             </button>
             
             {showActionsDropdown && (
-              <div className="absolute top-10 right-0 w-44 bg-[#18181B]/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl p-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                <button
-                  onClick={() => {
-                    setShowActionsDropdown(false);
-                    const scrollArea = document.getElementById("drawer-actions-area");
-                    if (scrollArea) {
-                      scrollArea.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className="w-full text-left px-3 py-2 text-xs font-semibold text-white hover:bg-white/5 rounded-lg transition"
-                >
-                  Manage/View Actions
-                </button>
+              <div className="absolute top-10 right-1 w-42 bg-[#18181B]/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl p-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                
                 
                 {isGroup ? (
                   <>
@@ -624,9 +616,16 @@ const InfoDrawer = ({ onClose }: InfoDrawerProps) => {
                       className="w-7 h-7"
                       online={Boolean(isMemberOnline)}
                     />
-                    <span className="text-xs text-[#E4E4E7] truncate font-medium">
-                      {member.name} {member._id === user?._id && " (You)"}
-                    </span>
+                    <div className="flex flex-col text-left min-w-0">
+                      <span className="text-xs text-[#E4E4E7] truncate font-medium">
+                        {member.name} {member._id === user?._id && " (You)"}
+                      </span>
+                      {member.username && (
+                        <span className="text-[10px] text-[#71717A] truncate">
+                          @{member.username}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-center gap-2">
                     {isAdmin ? (

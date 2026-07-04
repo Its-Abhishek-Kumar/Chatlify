@@ -106,7 +106,13 @@ export const getUserConversations = async (req: any, res: any) => {
       })
     );
 
-    res.json(mapped);
+    const filtered = mapped.filter((c: any) => {
+      // Hide direct conversations if they have no visible messages (e.g. cleared chat history)
+      if (c.type === "direct" && !c.lastMessage) return false;
+      return true;
+    });
+
+    res.json(filtered);
   } catch (err: any) {
     console.error("Failed to retrieve conversations:", err);
     res.status(500).json({ message: "Failed to retrieve conversations", error: err.message });

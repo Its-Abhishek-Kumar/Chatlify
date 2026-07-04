@@ -111,6 +111,18 @@ const ChatLayout = () => {
       } else {
         socket.emit("conversation:read", { conversationId: msg.conversationId });
       }
+
+      // Check if this conversation exists in our store list.
+      // If it doesn't, refetch conversations to restore/add it to the sidebar list.
+      const currentConversations = useChatStore.getState().conversations;
+      const exists = currentConversations.some((c) => c._id?.toString() === msg.conversationId?.toString());
+      if (!exists) {
+        getConversationsAPI()
+          .then((res) => {
+            setConversations(res.data);
+          })
+          .catch((err) => console.error("Failed to refresh conversations on new message:", err));
+      }
     };
 
     const handlePresenceInit = ({ users }: { users: string[] }) => {

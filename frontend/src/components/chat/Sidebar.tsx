@@ -644,7 +644,7 @@ const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
                     src={u.avatar}
                     name={u.name}
                     className="w-8 h-8"
-                    online={u.isOnline}
+                    online={onlineUsers.has(u._id?.toString())}
                   />
                   <div className="flex-1 text-left min-w-0">
                     <p className="text-sm font-semibold text-white truncate">{u.name}</p>

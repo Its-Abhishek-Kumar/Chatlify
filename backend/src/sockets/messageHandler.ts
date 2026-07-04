@@ -74,7 +74,7 @@ export const handleSendMessage = async (io: any, socket: any, data: any) => {
         ]
       });
       if (!connection) {
-        socket.emit("message:error", { message: "You must be connected to this user to send messages." });
+        socket.emit("message:error", { message: "You must be friends with this user to send messages." });
         return;
       }
     }

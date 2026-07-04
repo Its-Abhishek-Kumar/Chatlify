@@ -453,11 +453,27 @@ const ChatWindow = ({ onToggleInfo }: ChatWindowProps) => {
       console.log("DEBUG: Clearing chat history for:", activeConversationId);
       await api.post(`/api/messages/${activeConversationId}/clear`);
       setMessages((prev) => prev.filter((m) => m.conversationId?.toString() !== activeConversationId.toString()));
+      
+      const targetConv = conversations.find((c) => c._id?.toString() === activeConversationId.toString());
+      const isDirect = targetConv?.type === "direct";
+
       setConversations((prev: any[]) =>
-        prev.map((c) =>
-          c._id?.toString() === activeConversationId.toString() ? { ...c, lastMessage: null } : c
-        )
+        prev
+          .filter((c) => {
+            if (c._id?.toString() !== activeConversationId.toString()) return true;
+            // Remove direct conversation from sidebar
+            if (c.type === "direct") return false;
+            return true;
+          })
+          .map((c) =>
+            c._id?.toString() === activeConversationId.toString() ? { ...c, lastMessage: null } : c
+          )
       );
+
+      if (isDirect) {
+        setActiveConversation(null);
+      }
+
       setShowClearConfirm(false);
     } catch (err) {
       console.error("Failed to clear chat history", err);
@@ -783,7 +799,7 @@ const ChatWindow = ({ onToggleInfo }: ChatWindowProps) => {
 
                 {/* BUBBLE BODY */}
                 <div
-                  className={`pl-3.5 pr-2 pt-2 pb-5 ${
+                  className={`pl-3.5 pr-0.5 pt-2 pb-5 ${
                     isMine ? "bubble-sent self-end" : "bubble-received self-start"
                   } relative flex flex-col w-fit`}
                 >
