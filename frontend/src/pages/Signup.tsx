@@ -100,7 +100,7 @@ const Signup = ({ switchMode }: any) => {
           <Logo size={36} showText={true} variant="small" tagline="Real-time messaging" />
         </div>
 
-        <h2 className="text-xl font-bold mb-1 text-white tracking-tight">
+        <h2 className="text-xl font-bold mb-1 text-white tracking-wide">
           Create account
         </h2>
         <p className="text-xs text-[#71717A] mb-5 leading-relaxed">
@@ -196,7 +196,7 @@ const Signup = ({ switchMode }: any) => {
             disabled={loading}
             className="w-full py-2.5 rounded-btn btn-gradient text-white font-bold text-xs transition duration-200 disabled:opacity-50 mt-2 shadow-lg cursor-pointer"
           >
-            {loading ? "Registering..." : "Create Free Account"}
+            {loading ? "Registering..." : "Create Account"}
           </button>
         </div>
 

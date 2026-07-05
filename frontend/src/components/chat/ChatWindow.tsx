@@ -799,7 +799,7 @@ const ChatWindow = ({ onToggleInfo }: ChatWindowProps) => {
 
                 {/* BUBBLE BODY */}
                 <div
-                  className={`pl-3.5 pr-0.5 pt-2 pb-5 ${
+                  className={`pl-3.5 pr-2 pt-2 pb-5 ${
                     isMine ? "bubble-sent self-end" : "bubble-received self-start"
                   } relative flex flex-col w-fit`}
                 >

@@ -147,7 +147,12 @@ body,
 }
 
 .rounded-sidebar {
-  border-radius: 24px;
+  border-radius: 0px;
+}
+@media (min-width: 768px) {
+  .rounded-sidebar {
+    border-radius: 24px;
+  }
 }
 
 /* Hide scrollbar classes */
