@@ -8,7 +8,7 @@ export const connectSocket = (token: string) => {
 
   socket = io(import.meta.env.VITE_API_URL || "http://127.0.0.1:8080", {
     auth: { token },
-    transports: ["websocket"],
+    transports: ["websocket", "polling"],
     reconnection: true,
     reconnectionDelay: 1000,
     reconnectionDelayMax: 5000,

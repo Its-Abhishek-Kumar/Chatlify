@@ -13,15 +13,14 @@ const fallbackName = "attachment";
 const officeExtensions = new Set(["doc", "docx", "xls", "xlsx", "ppt", "pptx"]);
 
 const getApiBaseUrl = () => {
-  let baseUrl = api.defaults.baseURL || "";
-  if (baseUrl.includes("localhost") || baseUrl.includes("127.0.0.1")) {
-    const hostname = window.location.hostname === "localhost" ? "127.0.0.1" : window.location.hostname;
-    baseUrl = baseUrl.replace("localhost", hostname).replace("127.0.0.1", hostname);
-  } else if (!baseUrl) {
-    const hostname = window.location.hostname === "localhost" ? "127.0.0.1" : window.location.hostname;
-    baseUrl = `${window.location.protocol}//${hostname}:8080`;
+  let baseUrl = api.defaults.baseURL || import.meta.env.VITE_API_URL || "";
+
+  if (!baseUrl) {
+    console.warn("API base URL is not configured.");
+    return "";
   }
-  return baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+
+  return baseUrl.replace(/\/$/, "");
 };
 
 export const getAttachmentName = (attachment?: AttachmentLike | null) => {
