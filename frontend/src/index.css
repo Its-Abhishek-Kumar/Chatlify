@@ -2,13 +2,21 @@
 @import "tailwindcss";
 @tailwind utilities;
 
-body {
-  background: #09090B;
-  color: #FAFAFA;
-  font-family: 'Geist', 'Inter', sans-serif;
+html,
+body,
+#root {
+  height: 100%;
+  height: -webkit-fill-available;
+  width: 100%;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #09090B;
+  color: #FAFAFA;
+  font-family: 'Geist', 'Inter', sans-serif;
 }
 
 /* Glassmorphism Styles matching VisionOS/Linear */

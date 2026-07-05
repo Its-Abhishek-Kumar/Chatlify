@@ -163,7 +163,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="relative border-t border-white/5 bg-white/[0.01] backdrop-blur-md px-4 py-3 flex flex-col gap-2 z-20">
+    <div className="relative border-t border-white/5 bg-white/[0.01] backdrop-blur-md px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] flex flex-col gap-2 z-20">
       
       {/* 1. QUOTED REPLY PREVIEW ROW */}
       {replyToMessage && (
