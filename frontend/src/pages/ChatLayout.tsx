@@ -423,7 +423,7 @@ const ChatLayout = () => {
         </div>
         
         {/* MOBILE BOTTOM NAVIGATION BAR */}
-        <div className="flex md:hidden glass-strong justify-around py-2.5 px-4 rounded-xl mt-2 mx-3 mb-3 z-10 shrink-0 border border-white/5 pb-[calc(10px+env(safe-area-inset-bottom))]">
+        <div className="flex md:hidden glass-strong justify-around py-2.5 px-4 rounded-none mt-2 mx-0 mb-0 z-10 shrink-0 border border-white/5 pb-[calc(10px+env(safe-area-inset-bottom))]">
           {[
             { id: "chats", label: "Chats", icon: <MessageSquare size={18} />, badge: Object.values(unreadCounts).filter(c => c > 0).length },
             { id: "connections", label: "Connections", icon: <UserPlus size={18} />, badge: connectionNotifications.length },
