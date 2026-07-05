@@ -29,7 +29,13 @@ import { Conversation } from "./models/Conversation.js";
 
 
 const app = express();
-app.use(cors());
+const allowedOrigin = process.env.CLIENT_URL!;
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use("/api/conversations", conversationRoutes);
@@ -46,7 +52,8 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: allowedOrigin,
+    credentials: true,
   },
 });
 
