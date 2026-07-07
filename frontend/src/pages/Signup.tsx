@@ -46,7 +46,7 @@ const Signup = ({ switchMode }: any) => {
       } else {
         const phoneClean = cleanId.replace(/[^\d+]/g, "");
         if (phoneClean.length < 6) {
-          nextErrors.identifier = "Please enter a valid mobile number (min 6 digits)";
+          nextErrors.identifier = "Please enter a valid email";
         }
       }
     }
@@ -104,7 +104,7 @@ const Signup = ({ switchMode }: any) => {
           Create account
         </h2>
         <p className="text-xs text-[#71717A] mb-5 leading-relaxed">
-          Get started with your email address or mobile number.
+          Get started with your email address.
         </p>
 
         <div className="space-y-3.5">
